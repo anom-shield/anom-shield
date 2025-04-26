@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANOM SHIELD - Cyber Security Experts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        :root {
+            --primary-color: #00ffcc; /* Neon Teal */
+            --secondary-color: #9933ff; /* Electric Purple */
+            --background-color: #0a0a1a; /* Dark Blue/Black */
+            --text-color: #e0e0e0; /* Light Gray */
+            --accent-color: #ff00ff; /* Magenta */
+            --glow-color: rgba(0, 255, 204, 0.5);
+            --glow-color-purple: rgba(153, 51, 255, 0.5);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 10%, var(--glow-color-purple) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, var(--glow-color) 0%, transparent 30%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--glow-color);
+            letter-spacing: 2px;
+        }
+
+        .mobile-nav-toggle {
+            display: none; /* Hidden by default */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001; /* Above header content */
+        }
+
+        .mobile-nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        nav {
+           /* Ensure nav takes space */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 5px var(--glow-color);
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary-color);
+            text-shadow: 0 0 8px var(--glow-color);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(10, 10, 26, 0.5), rgba(10, 10, 26, 0.9)),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%2300ffcc" stop-opacity="0.1"/><stop offset="100%" stop-color="%239933ff" stop-opacity="0.1"/></linearGradient></defs><rect width="100" height="100" fill="url(%23g)"/><path d="M0 50 L50 0 L100 50 L50 100 Z" fill="none" stroke="%2300ffcc" stroke-width="0.2"/><path d="M0 0 L100 100 M100 0 L0 100" stroke="%239933ff" stroke-width="0.1"/></svg>');
+            background-size: 100px 100px, cover;
+            opacity: 0.1;
+            z-index: -1;
+            animation: matrix 20s linear infinite;
+        }
+
+        @keyframes matrix {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 -1000px; }
+        }
+
+
+        .hero-content h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            text-shadow: 0 0 15px var(--glow-color);
+            animation: flicker 3s infinite alternate;
+        }
+
+        .hero-content p {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            box-shadow: 0 0 20px var(--glow-color);
+            transform: translateY(-3px);
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                    0 0 7px var(--glow-color),
+                    0 0 10px var(--glow-color),
+                    0 0 21px var(--glow-color),
+                    0 0 42px var(--primary-color),
+                    0 0 82px var(--primary-color),
+                    0 0 92px var(--primary-color),
+                    0 0 102px var(--primary-color),
+                    0 0 151px var(--primary-color);
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+                opacity: 0.8;
+            }
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+        }
+
+        .section h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px var(--glow-color-purple);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background: rgba(20, 20, 40, 0.7);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(153, 51, 255, 0.3);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px var(--glow-color-purple);
+        }
+
+        .service-item h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between icon and text */
+        }
+
+        .service-item h3 i {
+            color: var(--secondary-color); /* Use accent color for icons */
+            font-size: 1.2em; /* Slightly larger icon */
+            text-shadow: 0 0 5px var(--glow-color-purple);
+        }
+
+        .service-item p {
+            font-size: 1em;
+            color: var(--text-color);
+        }
+
+        footer {
+            background: var(--background-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--primary-color);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block; /* Show hamburger on mobile */
+            }
+
+            nav ul {
+                display: flex; /* Use flex for layout */
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 100%; /* Position below header */
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 26, 0.95); /* Slightly more opaque background */
+                backdrop-filter: blur(5px);
+                padding: 20px 0;
+                border-top: 1px solid var(--primary-color);
+                box-shadow: 0 5px 15px rgba(0, 255, 204, 0.1);
+                transform: translateY(-150%); /* Start hidden way off screen */
+                transition: transform 0.4s ease-in-out;
+                z-index: 999; /* Below header but above content */
+            }
+
+            nav ul.mobile-menu-open {
+                transform: translateY(0); /* Slide into view */
+            }
+
+            nav ul li {
+                margin: 15px 0; /* More spacing for mobile */
+                width: 100%;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .hero-content p {
+                font-size: 1.1em;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><a href="#home" style="color: inherit; text-decoration: none;">ANOM SHIELD</a></div>
+            <nav>
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="primary-navigation">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ANOM SHIELD</h1>
+            <p>Fortifying Your Digital Frontier with Futuristic Cyber Security</p>
+            <a href="#contact" class="cta-button">Secure Your Assets</a>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3><i class="fa-solid fa-users-gear"></i> Cybersecurity Awareness Training</h3>
+                    <p>Educating your workforce to recognize and respond to cyber threats effectively.</p>
+                </div>
+                <div class="service-item">
+                    <h3><i class="fa-solid fa-shield-alt"></i> Cybersecurity Risk Management</h3>
+                    <p>Identifying, assessing, and mitigating cybersecurity risks to protect your assets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section id="about" class="section">
+        <div class="container">
+            <h2>About ANOM SHIELD</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">ANOM SHIELD is at the forefront of cyber defense, utilizing next-generation technology and elite expertise to protect organizations from the evolving threat landscape. We provide bespoke security strategies designed for the digital age.</p>
+            <!-- Add more about content here -->
+        </div>
+    </section>
+
+     <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p style="text-align: center;">Ready to enhance your security posture? Reach out to our experts.</p>
+            
+            <form id="contact-form" action="https://formspree.io/f/xrbqgbpy" method="POST" style="max-width: 600px; margin: 30px auto; text-align: center;">
+                 <input type="text" name="name" placeholder="Your Name" required style="display: block; width: 95%; padding: 10px; margin-bottom: 15px; background: rgba(255,255,255,0.1); border: 1px solid var(--primary-color); color: var(--text-color); border-radius: 4px;">
+                 <input type="email" name="email" placeholder="Your Email" required style="display: block; width: 95%; padding: 10px; margin-bottom: 15px; background: rgba(255,255,255,0.1); border: 1px solid var(--primary-color); color: var(--text-color); border-radius: 4px;">
+                 <textarea name="message" placeholder="Your Message" rows="5" required style="display: block; width: 95%; padding: 10px; margin-bottom: 15px; background: rgba(255,255,255,0.1); border: 1px solid var(--primary-color); color: var(--text-color); border-radius: 4px; font-family: 'Roboto', sans-serif;"></textarea>
+                 <button type="submit" class="cta-button">Send Message</button>
+                 <div id="form-status" style="margin-top: 15px; font-weight: bold;"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ANOM SHIELD. All Rights Reserved. | Securing the Future</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Contact Form Submission ---
+        const form = document.getElementById('contact-form');
+        const statusDiv = document.getElementById('form-status');
+
+        async function handleSubmit(event) {
+          event.preventDefault(); // Prevent default redirect
+          statusDiv.innerHTML = 'Sending...'; // Provide feedback
+          statusDiv.style.color = 'var(--text-color)'; 
+          const formData = new FormData(event.target);
+
+          try {
+            const response = await fetch(event.target.action, {
+              method: event.target.method,
+              body: formData,
+              headers: {
+                  'Accept': 'application/json' // Important for AJAX submission with Formspree
+              }
+            });
+
+            if (response.ok) {
+              statusDiv.innerHTML = "Thanks for your submission!";
+              statusDiv.style.color = 'var(--primary-color)'; // Success color
+              form.reset(); // Clear the form fields
+            } else {
+              // Try to parse error response from Formspree
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  // Display specific Formspree errors
+                  statusDiv.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                } else {
+                  // Generic error if no specific errors provided
+                  statusDiv.innerHTML = "Oops! There was a problem submitting your form. Status: " + response.status;
+                }
+                statusDiv.style.color = '#ff6b6b'; // Error color (e.g., light red)
+              }).catch(error => {
+                 // Error parsing JSON or other issue
+                 statusDiv.innerHTML = "Oops! There was a problem submitting your form. Please try again.";
+                 statusDiv.style.color = '#ff6b6b'; 
+              });
+            }
+          } catch (error) {
+            // Network error or other fetch issue
+            statusDiv.innerHTML = "Oops! There was a network error submitting your form. Please check your connection.";
+            statusDiv.style.color = '#ff6b6b'; 
+          }
+        }
+
+        form.addEventListener("submit", handleSubmit);
+
+        // --- Mobile Navigation Toggle ---
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const primaryNav = document.getElementById('primary-navigation');
+
+        mobileNavToggle.addEventListener('click', () => {
+            const isOpen = primaryNav.classList.toggle('mobile-menu-open');
+            mobileNavToggle.setAttribute('aria-expanded', isOpen);
+
+            // Optional: Animate hamburger icon to 'X'
+            const spans = mobileNavToggle.querySelectorAll('span');
+            if (isOpen) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        primaryNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (primaryNav.classList.contains('mobile-menu-open')) {
+                    primaryNav.classList.remove('mobile-menu-open');
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                    // Reset hamburger icon
+                     const spans = mobileNavToggle.querySelectorAll('span');
+                     spans[0].style.transform = 'none';
+                     spans[1].style.opacity = '1';
+                     spans[2].style.transform = 'none';
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>
